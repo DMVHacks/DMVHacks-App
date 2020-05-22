@@ -18,6 +18,7 @@ let styles = StyleSheet.create({
 
         marginVertical: 10,
         padding: "1em",
+        color: "#fff",
     }
 });
 
@@ -37,7 +38,7 @@ function ClassInfoCompact({ className, navigation }) {
                 }}
             />
         </View>
-    )
+    );
 }
 
 function ClassInfoDetailed({ className }) {
@@ -46,8 +47,12 @@ function ClassInfoDetailed({ className }) {
         <View style={ styles.bluebox }>
             <Header color="#fff" fontSize="5em">{ classInfo.title }</Header>
             <MyText color="#fff">{ classInfo.longDesc }</MyText>
+            <Header color="#fff" fontSize="3em">Topics covered:</Header>
+            {
+                classInfo.topicsCovered.map(item => <MyText color="#fff">{ item }</MyText>)
+            }
         </View>
-    )
+    );
 }
 
 function ClassInfoPage({ route, navigation }) {
@@ -57,7 +62,7 @@ function ClassInfoPage({ route, navigation }) {
             <ClassInfoDetailed className={ className } />
             <BackButton navigation={ navigation }/>
         </View>
-    )
+    );
 }
 
 let temporaryClassList = [
@@ -105,3 +110,4 @@ export {
     ClassesOffered,
     MyClasses,
 }
+
