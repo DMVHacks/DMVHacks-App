@@ -1,19 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+const Stack = createStackNavigator();
+
+import WelcomeScreen from './views/Welcome';
+import { ClassInfoPage, ClassesOffered, MyClasses } from './views/ClassInfo';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Welcome"
+          component={WelcomeScreen}
+        />
+        <Stack.Screen
+          name="My Classes"
+          component={MyClasses}
+        />
+        <Stack.Screen
+          name="Classes Offered"
+          component={ClassesOffered}
+        />
+        <Stack.Screen
+          name="Detailed Class Info"
+          component={ClassInfoPage}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
